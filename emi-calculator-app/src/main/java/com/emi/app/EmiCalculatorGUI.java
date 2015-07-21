@@ -27,7 +27,7 @@ public class EmiCalculatorGUI {
 	/**
 	 * Generates the initial UI with required fields.
 	 */
-	private void init(){
+	private void buildUI(){
 		mainAppFrame = new JFrame("EMI Calculator");
 		mainAppPanel = new JPanel();
 		emiCalculation = new EmiCalculator();
@@ -104,6 +104,6 @@ public class EmiCalculatorGUI {
 	 */
 	public static void main(String args[]){
 		EmiCalculatorGUI gui = new EmiCalculatorGUI();
-		gui.init();
+		gui.buildUI();
 	}
 }
