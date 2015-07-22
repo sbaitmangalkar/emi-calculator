@@ -2,6 +2,7 @@ package com.emi.app;
 
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -35,8 +36,8 @@ public class EmiCalculatorGUI {
 		mainAppPanel = new JPanel();
 		emiCalculation = new EmiCalculator();
 		
-		JLabel headerDisplay = new JLabel("Calculate your home, car and personal loan EMIs");
-		headerDisplay.setFont(new Font("Verdan", 1, 11));
+		JLabel headerDisplay = new JLabel("Calculate your home loan, car loan and personal loan EMIs");
+		headerDisplay.setFont(new Font("Verdan", 1, 12));
 		
 		JLabel principalDisplay = new JLabel("Principal Amount: ");
 		principalDisplay.setFont(new Font("Verdan", 1, 11));
@@ -92,7 +93,9 @@ public class EmiCalculatorGUI {
 			
 			public void actionPerformed(ActionEvent e) {
 				EmiComputationImpl calculator = new EmiComputationImpl();
-				mainAppFrame.remove(mainAppPanel);
+				mainAppPanel.setVisible(false);
+				mainAppFrame.getContentPane().removeAll();
+				
 				JPanel resultPanel = new JPanel(new FlowLayout());
 				
 				JLabel emiLabel = new JLabel("Monthly Payment(EMI):");
@@ -110,7 +113,7 @@ public class EmiCalculatorGUI {
 				JPanel totalInterestPanel = new JPanel(new FlowLayout());
 				JPanel totalPaymentPanel = new JPanel(new FlowLayout());
 				
-				JButton okButton = new JButton();
+				JButton okButton = new JButton("Ok");
 				
 				String principalAmountStr = principalText.getText();
 				String rateOfInterestStr = rateText.getText();
@@ -138,9 +141,40 @@ public class EmiCalculatorGUI {
 				System.out.println(emi);
 				System.out.println(totalInterest);
 				System.out.println(totalPayment);
+				
+				PieChart chart = new PieChart(totalInterest, principalAmount);
+				JPanel chartPanel = chart.getChartPlot();
+				chartPanel.setLayout(new GridLayout());
+				
+				emiResult.setText(String.valueOf(emi));
+				emiResult.setFont(new Font("Verdana", 1, 12));
+				totalInterestResult.setText(String.valueOf(totalInterest));
+				totalInterestResult.setFont(new Font("Verdana", 1, 12));
+				totalPaymentResult.setText(String.valueOf(totalPayment));
+				totalPaymentResult.setFont(new Font("Verdana", 1, 12));
+				
+				emiPanel.add(emiLabel);
+				emiPanel.add(emiResult);
+				totalInterestPanel.add(totalInterestLabel);
+				totalInterestPanel.add(totalInterestResult);
+				totalPaymentPanel.add(totalPaymentLabel);
+				totalPaymentPanel.add(totalPaymentResult);
+				JPanel buttonPanel = new JPanel(new FlowLayout());
+				buttonPanel.add(okButton);
+				
+				resultPanel.add(emiPanel);
+				resultPanel.add(totalInterestPanel);
+				resultPanel.add(totalPaymentPanel);
+				resultPanel.add(chartPanel);
+				resultPanel.add(buttonPanel);
+				
+				mainAppFrame.getContentPane().add(resultPanel);
+				mainAppFrame.setSize(650, 600);
+				mainAppFrame.setResizable(false);
 			}
 		});
 		
+		mainAppPanel.add(headerDisplay);
 		mainAppPanel.add(principalPanel);
 		mainAppPanel.add(ratePanel);
 		mainAppPanel.add(termPanel);
