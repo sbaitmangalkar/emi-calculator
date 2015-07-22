@@ -170,7 +170,7 @@ public class EmiCalculatorGUI {
 					
 					mainAppFrame.getContentPane().removeAll();
 					mainAppFrame.getContentPane().add(errorPanel);
-					mainAppFrame.setSize(400, 250);
+					mainAppFrame.setSize(400, 200);
 				}
 				/*
 				 * End of validation
