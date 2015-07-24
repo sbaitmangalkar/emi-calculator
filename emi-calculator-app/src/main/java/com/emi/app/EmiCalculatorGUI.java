@@ -39,8 +39,14 @@ public class EmiCalculatorGUI {
 		 * Heading of the application
 		 */
 		JLabel headerDisplay = new JLabel(
-				"Calculate your home loan, car loan and personal loan EMIs");
-		headerDisplay.setFont(new Font("Verdan", 1, 12));
+				"Calculate your home loan, car loan, personal loan");
+		headerDisplay.setFont(new Font("Verdana", 1, 12));
+		
+		JLabel headerDisplay2 = new JLabel("and education loan EMIs");
+		headerDisplay2.setFont(new Font("Verdana", 1, 12));
+		
+		JLabel footerDisplay = new JLabel("Powered by Shyam");
+		footerDisplay.setFont(new Font("Verdana", 1, 8));
 		/*
 		 * Text fields for entering principal amount, rate of interest and term
 		 * is provided below.
@@ -74,6 +80,10 @@ public class EmiCalculatorGUI {
 
 		JPanel headerPanel = new JPanel(new FlowLayout());
 		headerPanel.add(headerDisplay);
+		headerPanel.add(headerDisplay2);
+		
+		JPanel footerPanel = new JPanel(new FlowLayout());
+		footerPanel.add(footerDisplay);
 
 		JPanel principalPanel = new JPanel(new FlowLayout());
 		principalPanel.add(principalDisplay);
@@ -239,14 +249,16 @@ public class EmiCalculatorGUI {
 		 */
 
 		mainAppPanel.add(headerDisplay);
+		mainAppPanel.add(headerDisplay2);
 		mainAppPanel.add(principalPanel);
 		mainAppPanel.add(ratePanel);
 		mainAppPanel.add(termPanel);
 		mainAppPanel.add(termTypePanel);
 		mainAppPanel.add(buttonPanel);
+		//mainAppPanel.add(footerDisplay);
 
 		mainAppFrame.getContentPane().add(mainAppPanel);
-		mainAppFrame.setSize(400, 250);
+		mainAppFrame.setSize(400, 270);
 		mainAppFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainAppFrame.setVisible(true);
 	}
