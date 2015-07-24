@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -149,7 +150,7 @@ public class EmiCalculatorGUI {
 					public void actionPerformed(ActionEvent e) {
 						mainAppFrame.getContentPane().removeAll();
 						mainAppFrame.getContentPane().add(mainAppPanel);
-						mainAppFrame.setSize(380, 250);
+						mainAppFrame.setSize(380, 255);
 					}
 				});
 				/*
@@ -214,12 +215,17 @@ public class EmiCalculatorGUI {
 				PieChart chart = new PieChart(totalInterest, principalAmount);
 				JPanel chartPanel = chart.getChartPlot();
 				chartPanel.setLayout(new GridLayout());
-
-				emiResult.setText(String.valueOf(emi));
+				
+				DecimalFormat formatter = new DecimalFormat("##,##,###");
+				String finalEmi = formatter.format(emi);
+				String finalTotalInterest = formatter.format(totalInterest);
+				String finalTotalPayment = formatter.format(totalPayment);
+				
+				emiResult.setText(finalEmi);
 				emiResult.setFont(new Font("Verdana", 1, 12));
-				totalInterestResult.setText(String.valueOf(totalInterest));
+				totalInterestResult.setText(finalTotalInterest);
 				totalInterestResult.setFont(new Font("Verdana", 1, 12));
-				totalPaymentResult.setText(String.valueOf(totalPayment));
+				totalPaymentResult.setText(finalTotalPayment);
 				totalPaymentResult.setFont(new Font("Verdana", 1, 12));
 
 				emiPanel.add(emiLabel);
