@@ -253,6 +253,23 @@ public class EmiCalculatorGUI {
 		/*
 		 * END: ActionListener for calculate button
 		 */
+		
+		/*
+		 * START: ActionListener for cancel button.
+		 * On cancel, all the text fields are cleared. 
+		 */
+		cancel.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				principalText.setText("");
+				rateText.setText("");
+				termText.setText("");
+				
+			}
+		});
+		/*
+		 * END: ActionListener for cancel button.
+		 */
 
 		mainAppPanel.add(headerDisplay);
 		mainAppPanel.add(headerDisplay2);
