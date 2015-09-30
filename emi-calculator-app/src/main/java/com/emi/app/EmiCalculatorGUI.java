@@ -77,7 +77,7 @@ public class EmiCalculatorGUI {
 		radioButtonGroup.add(month);
 
 		JButton calculate = new JButton("Calculate");
-		JButton cancel = new JButton("Cancel");
+		JButton cancel = new JButton("Clear");
 
 		JPanel headerPanel = new JPanel(new FlowLayout());
 		headerPanel.add(headerDisplay);
@@ -151,6 +151,7 @@ public class EmiCalculatorGUI {
 						mainAppFrame.getContentPane().removeAll();
 						mainAppFrame.getContentPane().add(mainAppPanel);
 						mainAppFrame.setSize(380, 255);
+						mainAppFrame.setResizable(false);
 					}
 				});
 				/*
@@ -181,7 +182,7 @@ public class EmiCalculatorGUI {
 					
 					mainAppFrame.getContentPane().removeAll();
 					mainAppFrame.getContentPane().add(errorPanel);
-					mainAppFrame.setSize(400, 200);
+					mainAppFrame.setSize(380, 200);
 				}
 				/*
 				 * End of validation
@@ -281,9 +282,10 @@ public class EmiCalculatorGUI {
 		//mainAppPanel.add(footerDisplay);
 
 		mainAppFrame.getContentPane().add(mainAppPanel);
-		mainAppFrame.setSize(400, 270);
+		mainAppFrame.setSize(380, 270);
 		mainAppFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainAppFrame.setVisible(true);
+		mainAppFrame.setResizable(false);
 	}
 
 	/**
